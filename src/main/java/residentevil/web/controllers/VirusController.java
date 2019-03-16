@@ -2,18 +2,20 @@ package residentevil.web.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import residentevil.domain.models.binding.VirusAddBindingModel;
 import residentevil.domain.models.view.CapitalListViewModel;
 import residentevil.service.CapitalService;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 @Controller
@@ -48,4 +50,12 @@ public class VirusController extends BaseController {
         }
         return super.redirect("/");
     }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder){
+//        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        simpleDateFormat.setLenient(false);
+//        binder.registerCustomEditor(LocalDate.class, new CustomDateEditor(simpleDateFormat, true));
+//    }
 }

@@ -10,7 +10,6 @@ public class Virus extends BaseEntity {
 
     private String name;
     private String description;
-    private String represented;
     private String sideEffects;
     private Creator creator;
     private Boolean isDeadly;
@@ -41,15 +40,6 @@ public class Virus extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Column(name = "represented")
-    public String getRepresented() {
-        return this.represented;
-    }
-
-    public void setRepresented(String represented) {
-        this.represented = represented;
     }
 
     @Column(name = "side_effects")
