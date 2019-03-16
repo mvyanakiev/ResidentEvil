@@ -1,6 +1,6 @@
 package residentevil.service;
 
-import residentevil.domain.service.CapitalServiceModel;
+import residentevil.domain.models.serviceModel.CapitalServiceModel;
 
 import java.util.List;
 

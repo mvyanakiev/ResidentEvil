@@ -1,5 +1,4 @@
-package residentevil.domain.service;
-
+package residentevil.domain.models.serviceModel;
 
 public class CapitalServiceModel {
 

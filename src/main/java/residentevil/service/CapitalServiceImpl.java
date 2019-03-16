@@ -1,8 +1,9 @@
-package residentevil.domain.service;
+package residentevil.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import residentevil.domain.models.serviceModel.CapitalServiceModel;
 import residentevil.repository.CapitalRepository;
 import residentevil.service.CapitalService;
 
