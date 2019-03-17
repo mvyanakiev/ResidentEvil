@@ -7,6 +7,9 @@ import residentevil.domain.entities.Virus;
 import residentevil.domain.models.serviceModel.VirusServiceModel;
 import residentevil.repository.VirusRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class VirusServiceImpl implements VirusService {
 
@@ -29,6 +32,13 @@ public class VirusServiceImpl implements VirusService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public List<VirusServiceModel> finAllViruses() {
+        return this.virusRepository.findAll().stream()
+                .map(v -> this.modelMapper.map(v, VirusServiceModel.class))
+                .collect(Collectors.toList());
     }
 
 

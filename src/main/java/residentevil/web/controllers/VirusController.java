@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import residentevil.domain.models.binding.VirusAddBindingModel;
 import residentevil.domain.models.serviceModel.VirusServiceModel;
 import residentevil.domain.models.view.CapitalListViewModel;
+import residentevil.domain.models.view.VirusListViewModel;
 import residentevil.service.CapitalService;
 import residentevil.service.VirusService;
 
@@ -33,6 +34,7 @@ public class VirusController extends BaseController {
     @GetMapping("/add")
     public ModelAndView add(ModelAndView modelAndView, @ModelAttribute(name = "bindingModel") VirusAddBindingModel bindingModel) {
         modelAndView.addObject("bindingModel", bindingModel);
+
         modelAndView.addObject("capitals", this.capitalService.findAllCapitals()
                 .stream().map(c -> this.modelMapper.map(c, CapitalListViewModel.class)).collect(Collectors.toList()));
 
@@ -58,6 +60,21 @@ public class VirusController extends BaseController {
 
         return super.redirect("/");
     }
+
+    @GetMapping("/show")
+    public ModelAndView showViruses(ModelAndView modelAndView) {
+
+
+//        modelAndView.addObject("bindingModel", bindingModel);
+
+
+        modelAndView.addObject("viruses", this.virusService.finAllViruses()
+                .stream().map(v -> this.modelMapper.map(v, VirusListViewModel.class)).collect(Collectors.toList()));
+
+        return super.view("show-virus", modelAndView);
+    }
+
+
 
 
 
