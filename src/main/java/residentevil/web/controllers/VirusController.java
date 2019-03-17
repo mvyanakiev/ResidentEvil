@@ -13,6 +13,7 @@ import residentevil.domain.models.view.VirusListViewModel;
 import residentevil.service.CapitalService;
 import residentevil.service.VirusService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
@@ -64,15 +65,29 @@ public class VirusController extends BaseController {
     @GetMapping("/show")
     public ModelAndView showViruses(ModelAndView modelAndView) {
 
-
-//        modelAndView.addObject("bindingModel", bindingModel);
-
-
         modelAndView.addObject("viruses", this.virusService.finAllViruses()
                 .stream().map(v -> this.modelMapper.map(v, VirusListViewModel.class)).collect(Collectors.toList()));
 
         return super.view("show-virus", modelAndView);
     }
+
+
+
+
+
+    @PostMapping(path = {"/delete/{id}"})
+    public ModelAndView deleteVirus(@PathVariable(name = "id") String id, ModelAndView modelAndView, HttpSession session){
+
+        System.out.println(id);
+
+//        this.virusService.deleteVirusById(id);
+
+//        showViruses(modelAndView);
+
+        return super.redirect("/");
+    }
+
+
 
 
 

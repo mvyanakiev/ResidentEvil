@@ -41,5 +41,13 @@ public class VirusServiceImpl implements VirusService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteVirusById(String id) {
 
+        try {
+            this.virusRepository.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

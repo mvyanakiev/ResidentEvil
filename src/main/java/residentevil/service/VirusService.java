@@ -10,4 +10,6 @@ public interface VirusService {
 
     List<VirusServiceModel> finAllViruses();
 
+    void deleteVirusById(String id);
+
 }
