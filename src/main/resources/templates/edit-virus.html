@@ -12,11 +12,17 @@
     <main>
         <div class="container mt-4">
 
-            <h1>Spread a new Virus!</h1>
 
-            <form th:action="@{/viruses/add}" method="post" th:object="${bindingModel}">
+            <form th:action="@{/viruses/edit/{id}(id = ${model.id})}" method="post" th:object="${model}">
+
+                <div class="form-group">
+                    <h1>Edit Virus <strong th:text="*{name}"></strong></h1>
+                </div>
+
+
                 <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? 'text-danger'">
                     <label for="inputVirusName">Name</label>
+
                     <input type="text" th:field="*{name}" class="form-control" id="inputVirusName"
                            placeholder="Virus Name">
                     <small id="nameHelp" th:each="error : ${#fields.errors('name')}" th:text="${error}"></small>
@@ -24,7 +30,8 @@
 
                 <div class="form-group">
                     <label for="inputVirusDescription">Virus Description</label>
-                    <textarea class="form-control" rows="3" th:field="*{description}" id="inputVirusDescription"></textarea>
+                    <textarea class="form-control" rows="3" th:field="*{description}"
+                              id="inputVirusDescription"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -89,15 +96,17 @@
 
                 <div class="form-group">
                     <label for="inputVirusReleaseDate">Release date</label>
-                    <input type="date" class="form-control" th:field="*{releasedOn}" id="inputVirusReleaseDate">
+                    <input type="date" class="form-control" th:field="*{releasedOn}" id="inputVirusReleaseDate"
+                           th:disabled="${model.releasedOn}">
                 </div>
                 <div class="form-group">
                     <label for="inputVirusAffectedCapitals">Affected Capitals</label>
                     <select multiple class="form-control" id="inputVirusAffectedCapitals" th:field="*{capitals}">
-                        <option th:each="capital : ${capitals}" th:value="${capital.id}" th:text="${capital.name}"></option>
+                        <option th:each="capital : ${capitals}" th:value="${capital.id}"
+                                th:text="${capital.name}"></option>
                     </select>
                 </div>
-                <button class="btn re-background">Spread!</button>
+                <button class="btn re-background">Save</button>
             </form>
         </div>
     </main>

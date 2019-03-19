@@ -8,4 +8,5 @@ public interface CapitalService {
 
     List<CapitalServiceModel> findAllCapitals();
 
+    CapitalServiceModel findCapitalByID(String id);
 }

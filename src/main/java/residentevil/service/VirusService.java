@@ -12,4 +12,10 @@ public interface VirusService {
 
     void deleteVirusById(String id);
 
+    VirusServiceModel findVirusById(String id);
+
+    void saveEditedVirus(VirusServiceModel virusServiceModel);
+
+
+
 }

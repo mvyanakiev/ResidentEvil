@@ -14,4 +14,6 @@ public interface CapitalRepository extends JpaRepository<Capital, String> {
             "SELECT c from Capital c order by c.name")
     List<Capital> findAllOrOrderByName();
 
+    Capital findCapitalById(String id);
+
 }

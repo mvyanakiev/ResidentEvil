@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import residentevil.domain.models.binding.VirusAddBindingModel;
+import residentevil.domain.models.binding.VirusEditBindingModel;
 import residentevil.domain.models.serviceModel.VirusServiceModel;
 import residentevil.domain.models.view.CapitalListViewModel;
 import residentevil.domain.models.view.VirusListViewModel;
@@ -48,6 +49,9 @@ public class VirusController extends BaseController {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("bindingModel", bindingModel);
 
+            modelAndView.addObject("capitals", this.capitalService.findAllCapitals()
+                    .stream().map(c -> this.modelMapper.map(c, CapitalListViewModel.class)).collect(Collectors.toList()));
+
             return super.view("add-virus", modelAndView);
         }
 
@@ -72,31 +76,47 @@ public class VirusController extends BaseController {
     }
 
 
+    @GetMapping(path = {"/delete"})
+    public ModelAndView deleteVirus(@RequestParam("id") String id, ModelAndView modelAndView) {
 
+        this.virusService.deleteVirusById(id);
+        showViruses(modelAndView);
 
-
-    @PostMapping(path = {"/delete/{id}"})
-    public ModelAndView deleteVirus(@PathVariable(name = "id") String id, ModelAndView modelAndView, HttpSession session){
-
-        System.out.println(id);
-
-//        this.virusService.deleteVirusById(id);
-
-//        showViruses(modelAndView);
-
-        return super.redirect("/");
+        return super.view("show-virus", modelAndView);
     }
 
 
+    @GetMapping("/edit/{id}")
+    public ModelAndView editVirus(@PathVariable("id") String id, ModelAndView modelAndView, VirusEditBindingModel model) {
+
+        model = this.modelMapper.map(this.virusService.findVirusById(id), VirusEditBindingModel.class);
+        modelAndView.addObject("model", model);
+
+        modelAndView.addObject("capitals", this.capitalService.findAllCapitals()
+                .stream().map(c -> this.modelMapper.map(c, CapitalListViewModel.class)).collect(Collectors.toList()));
+
+        return super.view("edit-virus", modelAndView);
+    }
+
+    @PostMapping("/edit/{id}")
+    public ModelAndView saveEditedVirus(@PathVariable("id") String id,
+                                        @Valid @ModelAttribute(name = "bindingModel") VirusEditBindingModel bindingModel,
+                                        BindingResult bindingResult, ModelAndView modelAndView) {
 
 
+        VirusServiceModel virusServiceModel = this.modelMapper.map(bindingModel, VirusServiceModel.class);
+        virusServiceModel.setId(id);
+        this.virusService.saveEditedVirus(virusServiceModel);
 
 
+//todo validation
 
+        if (virusServiceModel == null) {
+            throw new IllegalArgumentException("Virus do not saved!");
+        }
 
-
-
-
+        return super.redirect("/");
+    }
 
 
 //    @InitBinder

@@ -37,11 +37,13 @@
                     <td th:text="${#dates.format(virus.releasedOn, 'dd-MMM-yyyy')}"></td>
 
                     <td>
-                        <button class="btn btn-outline-secondary">Edit</button>
+                        <a class="btn btn-outline-secondary"
+                                th:href="@{/viruses/edit/{id}(id=${virus.id})}" th:text="Edit"></a>
                     </td>
 
                     <td>
-                        <a th:href="@{/delete/{id}(id=${virus.id})}"  class="btn re-background">Delete</a>
+                        <a class="btn btn-outline-secondary"
+                           th:href="@{/viruses/delete(id=${virus.id})}" th:text="Delete"></a>
                     </td>
 
                 </tr>

@@ -24,7 +24,7 @@ public class VirusAddBindingModel {
     private Integer hoursUntilTurn;
     private Magnitude magnitude;
     private LocalDate releasedOn;
-//    private List<String> capitals;
+    private List<String> capitals;
 
     public VirusAddBindingModel() {
     }
@@ -120,11 +120,11 @@ public class VirusAddBindingModel {
         this.releasedOn = releasedOn;
     }
 
-//    public List<String> getCapitals() {
-//        return this.capitals;
-//    }
-//
-//    public void setCapitals(List<String> capitals) {
-//        this.capitals = capitals;
-//    }
+    public List<String> getCapitals() {
+        return this.capitals;
+    }
+
+    public void setCapitals(List<String> capitals) {
+        this.capitals = capitals;
+    }
 }
