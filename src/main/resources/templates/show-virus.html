@@ -11,9 +11,7 @@
 
     <main>
         <div class="container mt-4">
-
             <h1>All Viruses!</h1>
-
             <table class="table">
                 <thead>
                 <tr>
@@ -26,39 +24,22 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 <tr th:each="virus, iter : ${viruses}">
-
-
                     <td th:text="${iter.index} + 1"></td>
-
                     <td th:text="${virus.name}"></td>
                     <td th:text="${virus.magnitude}"></td>
                     <td th:text="${#dates.format(virus.releasedOn, 'dd-MMM-yyyy')}"></td>
-
                     <td>
                         <a class="btn btn-outline-secondary"
                                 th:href="@{/viruses/edit/{id}(id=${virus.id})}" th:text="Edit"></a>
                     </td>
-
                     <td>
                         <a class="btn btn-outline-secondary"
                            th:href="@{/viruses/delete(id=${virus.id})}" th:text="Delete"></a>
                     </td>
-
                 </tr>
                 </tbody>
             </table>
-
-
-            <!--<div class="form-group">-->
-            <!--<label for="inputVirusAffectedCapitals">Affected Capitals</label>-->
-            <!--<select multiple class="form-control" id="inputVirusAffectedCapitals" th:field="*{capitals}">-->
-            <!--<option th:each="capital : ${capitals}" th:value="${capital.id}" th:text="${capital.name}"></option>-->
-            <!--</select>-->
-            <!--</div>-->
-
-
         </div>
     </main>
 </div>

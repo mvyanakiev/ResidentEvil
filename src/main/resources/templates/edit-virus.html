@@ -102,11 +102,13 @@
                 <div class="form-group">
                     <label for="inputVirusAffectedCapitals">Affected Capitals</label>
                     <select multiple class="form-control" id="inputVirusAffectedCapitals" th:field="*{capitals}">
+                        <option value="12"selected>Test</option>
+
                         <option th:each="capital : ${capitals}" th:value="${capital.id}"
                                 th:text="${capital.name}"></option>
                     </select>
                 </div>
-                <button class="btn re-background">Save</button>
+                <button class="btn btn-outline-secondary">Save</button>
             </form>
         </div>
     </main>
