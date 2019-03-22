@@ -111,6 +111,7 @@ public class VirusAddBindingModel {
         this.magnitude = magnitude;
     }
 
+//    @DateBeforeToday
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public LocalDate getReleasedOn() {
         return this.releasedOn;

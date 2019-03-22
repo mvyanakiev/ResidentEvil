@@ -126,13 +126,6 @@ public class Virus extends BaseEntity {
         this.releasedOn = releasedOn;
     }
 
-//    @ManyToMany(targetEntity = Capital.class)
-//    @JoinTable(
-//            name = "viruses_capitals",
-//            joinColumns = @JoinColumn(name = "virus_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "capital_id", referencedColumnName = "id")
-//    )
-
     @ManyToMany(targetEntity = Capital.class)
     @JoinTable(
             name = "viruses_capitals",
