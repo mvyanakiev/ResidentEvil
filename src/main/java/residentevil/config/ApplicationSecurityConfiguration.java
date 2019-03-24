@@ -18,13 +18,15 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .csrf()
-                .csrfTokenRepository(csrfTokenRepository())
+//                .cors()
+//                    .disable()
+                    .csrf()
+                    .csrfTokenRepository(this.csrfTokenRepository())
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/", "/login", "/register").anonymous()
-                .antMatchers("/js/**", "/css/**").permitAll()
-//                  .antMatchers("/admin/**").hasAuthority("ADMIN")
+                    .antMatchers("/", "/login", "/register").permitAll()
+                    .antMatchers("/js/**", "/css/**").permitAll()
+//                  .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -35,7 +37,8 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .and()
                     .logout()
                 .and()
-                .exceptionHandling().accessDeniedPage("/unauthorized");
+                    .exceptionHandling()
+                    .accessDeniedPage("/unauthorized");
 
     }
 

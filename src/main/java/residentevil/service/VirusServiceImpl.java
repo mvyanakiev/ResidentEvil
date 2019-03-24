@@ -31,9 +31,7 @@ public class VirusServiceImpl implements VirusService {
         Virus virus = this.modelMapper.map(virusServiceModel, Virus.class);
         virus.getCapitals().clear();
 
-
         for (String capitalId : virusServiceModel.getCapitals() ) {
-
             virus.getCapitals().add(this.modelMapper.map(this.capitalService.findCapitalByID(capitalId), Capital.class));
         }
 
@@ -46,6 +44,9 @@ public class VirusServiceImpl implements VirusService {
             return null;
         }
     }
+
+
+
 
     @Override
     public List<VirusServiceModel> finAllViruses() {

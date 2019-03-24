@@ -129,8 +129,8 @@ public class Virus extends BaseEntity {
     @ManyToMany(targetEntity = Capital.class)
     @JoinTable(
             name = "viruses_capitals",
-            joinColumns = { @JoinColumn(name = "virus_id") },
-            inverseJoinColumns = { @JoinColumn(name = "capital_id") }
+            joinColumns = { @JoinColumn(name = "virus_id", referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "capital_id", referencedColumnName = "id") }
     )
     public List<Capital> getCapitals() {
         return this.capitals;

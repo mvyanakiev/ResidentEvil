@@ -54,9 +54,11 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @Transient
     @Column(name = "is_account_non_expired")
     public boolean isAccountNonExpired() {
-        return this.isAccountNonExpired;
+        return true; //fixme
+//        return this.isAccountNonExpired;
     }
 
     public void setAccountNonExpired(boolean accountNonExpired) {
@@ -64,9 +66,11 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @Transient
     @Column(name = "is_account_non_locked")
     public boolean isAccountNonLocked() {
-        return this.isAccountNonLocked;
+        return true; //fixme
+//        return this.isAccountNonLocked;
     }
 
     public void setAccountNonLocked(boolean accountNonLocked) {
@@ -74,9 +78,11 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @Transient
     @Column(name = "is_credentials_non_expired")
     public boolean isCredentialsNonExpired() {
-        return this.isCredentialsNonExpired;
+        return true; //fixme
+//        return this.isCredentialsNonExpired;
     }
 
     public void setCredentialsNonExpired(boolean credentialsNonExpired) {
@@ -84,9 +90,11 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @Transient
     @Column(name = "is_enabled")
     public boolean isEnabled() {
-        return this.isEnabled;
+        return true; //fixme
+//        return this.isEnabled;
     }
 
     public void setEnabled(boolean enabled) {
@@ -94,6 +102,7 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @Transient
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",

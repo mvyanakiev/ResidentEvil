@@ -46,22 +46,23 @@ public class VirusController extends BaseController {
     @PostMapping("/add")
     public ModelAndView addConfirm(@Valid @ModelAttribute(name = "bindingModel") VirusAddBindingModel bindingModel,
                                    BindingResult bindingResult, ModelAndView modelAndView) {
-        if (bindingResult.hasErrors()) {
-            modelAndView.addObject("bindingModel", bindingModel);
 
-            modelAndView.addObject("capitals", this.capitalService.findAllCapitals()
-                    .stream().map(c -> this.modelMapper.map(c, CapitalListViewModel.class)).collect(Collectors.toList()));
-
-            return super.view("add-virus", modelAndView);
-        }
+//        if (bindingResult.hasErrors()) {
+//            modelAndView.addObject("bindingModel", bindingModel);
+//
+//            modelAndView.addObject("capitals", this.capitalService.findAllCapitals()
+//                    .stream().map(c -> this.modelMapper.map(c, CapitalListViewModel.class)).collect(Collectors.toList()));
+//
+//            return super.view("add-virus", modelAndView);
+//        }
 
         VirusServiceModel virusServiceModel = this.modelMapper.map(bindingModel, VirusServiceModel.class);
 
         this.virusService.addVirus(virusServiceModel);
 
-        if (virusServiceModel == null) {
-            throw new IllegalArgumentException("Virus do not added!");
-        }
+//        if (virusServiceModel == null) {
+//            throw new IllegalArgumentException("Virus do not added!");
+//        }
 
         return super.redirect("/");
     }
