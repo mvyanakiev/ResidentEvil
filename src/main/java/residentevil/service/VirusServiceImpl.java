@@ -83,11 +83,8 @@ public class VirusServiceImpl implements VirusService {
 
         Virus virus = this.virusRepository.findById(virusServiceModel.getId()).orElse(null);
 
-
-
         virus.setName(virusServiceModel.getName());
         //todo all other fields
-
 
         try {
             this.virusRepository.saveAndFlush(virus);

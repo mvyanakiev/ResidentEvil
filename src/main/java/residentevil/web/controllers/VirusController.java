@@ -14,7 +14,6 @@ import residentevil.domain.models.view.VirusListViewModel;
 import residentevil.service.CapitalService;
 import residentevil.service.VirusService;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
@@ -104,27 +103,15 @@ public class VirusController extends BaseController {
                                         @Valid @ModelAttribute(name = "bindingModel") VirusEditBindingModel bindingModel,
                                         BindingResult bindingResult, ModelAndView modelAndView) {
 
-
         VirusServiceModel virusServiceModel = this.modelMapper.map(bindingModel, VirusServiceModel.class);
         virusServiceModel.setId(id);
         this.virusService.saveEditedVirus(virusServiceModel);
 
-
-//todo validation
+        //todo validation
 
         if (virusServiceModel == null) {
             throw new IllegalArgumentException("Virus do not saved!");
         }
-
         return super.redirect("/");
     }
-
-
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder){
-//        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        simpleDateFormat.setLenient(false);
-//        binder.registerCustomEditor(LocalDate.class, new CustomDateEditor(simpleDateFormat, true));
-//    }
 }

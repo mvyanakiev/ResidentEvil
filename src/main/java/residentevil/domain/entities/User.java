@@ -57,8 +57,7 @@ public class User extends BaseEntity implements UserDetails {
     @Transient
     @Column(name = "is_account_non_expired")
     public boolean isAccountNonExpired() {
-        return true; //fixme
-//        return this.isAccountNonExpired;
+        return true;
     }
 
     public void setAccountNonExpired(boolean accountNonExpired) {
@@ -69,8 +68,7 @@ public class User extends BaseEntity implements UserDetails {
     @Transient
     @Column(name = "is_account_non_locked")
     public boolean isAccountNonLocked() {
-        return true; //fixme
-//        return this.isAccountNonLocked;
+        return true;
     }
 
     public void setAccountNonLocked(boolean accountNonLocked) {
@@ -81,8 +79,7 @@ public class User extends BaseEntity implements UserDetails {
     @Transient
     @Column(name = "is_credentials_non_expired")
     public boolean isCredentialsNonExpired() {
-        return true; //fixme
-//        return this.isCredentialsNonExpired;
+        return true;
     }
 
     public void setCredentialsNonExpired(boolean credentialsNonExpired) {
@@ -93,8 +90,7 @@ public class User extends BaseEntity implements UserDetails {
     @Transient
     @Column(name = "is_enabled")
     public boolean isEnabled() {
-        return true; //fixme
-//        return this.isEnabled;
+        return true;
     }
 
     public void setEnabled(boolean enabled) {
@@ -117,6 +113,3 @@ public class User extends BaseEntity implements UserDetails {
         this.authorities = authorities;
     }
 }
-
-// user
-// 3c1e62a0-9158-4eea-ac72-1d5f69addd03
